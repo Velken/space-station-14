@@ -462,6 +462,11 @@
     layers:
     - state: default
     - state: idbrigmedic
+  - type: IdCard
+    jobTitle: job-title-brigmedic
+    jobIcon: JobIconBrigmedic
+  - type: PresetIdCard
+    job: Brigmedic
 
 - type: entity
   parent: IDCardStandard
