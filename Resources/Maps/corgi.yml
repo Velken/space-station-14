@@ -4,7 +4,7 @@ meta:
   engineVersion: 264.0.0
   forkId: wizards-testing
   forkVersion: 43d04a44feb4ffc462e3f8dd5f2c9f64d3f54fd8
-  time: 07/17/2025 14:59:55
+  time: 07/19/2025 14:41:40
   entityCount: 15170
 maps:
 - 1
@@ -1739,6 +1739,8 @@ entities:
     - type: RadiationGridResistance
     - type: ImplicitRoof
     - type: NavMap
+    - type: BecomesStation
+      id: Corgi
   - uid: 223
     mapInit: true
     paused: true
@@ -3297,7 +3299,7 @@ entities:
       pos: 136.5,-96.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -2278.5269
+      secondsUntilStateChange: -2343.2363
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -3437,7 +3439,7 @@ entities:
       pos: 143.5,-56.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -45842.508
+      secondsUntilStateChange: -45907.22
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -3448,7 +3450,7 @@ entities:
       pos: 140.5,-44.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -45517.277
+      secondsUntilStateChange: -45581.99
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -3475,7 +3477,7 @@ entities:
       pos: 115.5,-93.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -10794.638
+      secondsUntilStateChange: -10859.347
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -3777,7 +3779,7 @@ entities:
       pos: 47.5,-10.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -63852.19
+      secondsUntilStateChange: -63916.902
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -3795,7 +3797,7 @@ entities:
       pos: 36.5,-32.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -47843.676
+      secondsUntilStateChange: -47908.387
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -3988,7 +3990,7 @@ entities:
       pos: 115.5,-96.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -15734.966
+      secondsUntilStateChange: -15799.675
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -4076,7 +4078,7 @@ entities:
       pos: 75.5,-103.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -21186.645
+      secondsUntilStateChange: -21251.354
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -4406,7 +4408,7 @@ entities:
       access:
       - - Chemistry
     - type: Door
-      secondsUntilStateChange: -69574.95
+      secondsUntilStateChange: -69639.664
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -4841,7 +4843,7 @@ entities:
       pos: 129.5,-104.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -1750.294
+      secondsUntilStateChange: -1815.0034
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -4944,7 +4946,7 @@ entities:
       pos: 47.5,-46.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -33859.664
+      secondsUntilStateChange: -33924.375
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -4970,7 +4972,7 @@ entities:
       pos: 68.5,-51.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -38177.953
+      secondsUntilStateChange: -38242.664
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -4988,7 +4990,7 @@ entities:
       pos: 68.5,-59.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -32332.965
+      secondsUntilStateChange: -32397.674
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -5039,7 +5041,7 @@ entities:
       pos: 85.5,-67.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -28307.102
+      secondsUntilStateChange: -28371.81
       state: Opening
     - type: DoorBolt
       boltsDown: True
@@ -5154,7 +5156,7 @@ entities:
       access:
       - - Research
     - type: Door
-      secondsUntilStateChange: -62152.156
+      secondsUntilStateChange: -62216.867
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
