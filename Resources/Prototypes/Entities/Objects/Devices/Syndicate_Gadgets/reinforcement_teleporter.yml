@@ -107,14 +107,33 @@
   description: Call in a well armed assault cyborg, instantly!
   suffix: NukeOps
   components:
-    - type: GhostRole
-      name: ghost-role-information-syndicate-cyborg-assault-name
-      description: ghost-role-information-syndicate-cyborg-description
-      rules: ghost-role-information-silicon-rules
-      mindRoles:
-      - MindRoleGhostRoleSilicon
-      raffle:
-        settings: default
-      job: Borg
-    - type: GhostRoleMobSpawner
-      prototype: PlayerBorgSyndicateAssaultBattery
+  - type: GhostRole
+    name: ghost-role-information-syndicate-cyborg-assault-name
+    description: ghost-role-information-syndicate-cyborg-description
+    rules: ghost-role-information-silicon-rules
+    mindRoles:
+    - MindRoleGhostRoleSilicon
+    raffle:
+      settings: default
+    job: Borg
+  - type: GhostRoleMobSpawner
+    prototype: PlayerBorgSyndicateAssaultBattery
+
+- type: entity
+  parent: ReinforcementRadio
+  id: ReinforcementRadioSyndicateScurretEvil
+  name: scurret reinforcement radio
+  description: Calls in a scurret intern from the exchange program with Arnold's to asssit you.
+  components:
+  - type: GhostRole
+    name: ghost-role-information-scurret-evil-name
+    description: ghost-role-information-scurret-evil-description
+    rules: ghost-role-information-syndicate-reinforcement-rules
+    mindRoles:
+    - MindRoleGhostRoleTeamAntagonist
+    raffle:
+      settings: default
+  - type: GhostRoleMobSpawner
+    prototype: MobEmotionalSupportScurret
+  - type: EmitSoundOnUse
+    sound: /Audio/Animals/wawa_chatter.ogg
