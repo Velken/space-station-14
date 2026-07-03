@@ -258,6 +258,24 @@ public sealed partial class TileSystem : EntitySystem
     /// <summary>
     /// Returns a weighted pick of a tile variant.
     /// </summary>
+    public byte PickVariant(ContentTileDefinition tile)
+    {
+        return PickVariant(tile, _robustRandom);
+    }
+
+    /// <summary>
+    /// Returns a weighted pick of a tile variant.
+    /// </summary>
+    public byte PickVariant(ContentTileDefinition tile, int seed)
+    {
+        var rand = new RobustRandom();
+        rand.SetSeed(seed);
+        return PickVariant(tile, rand);
+    }
+
+    /// <summary>
+    /// Returns a weighted pick of a tile variant.
+    /// </summary>
     public byte PickVariant(ContentTileDefinition tile, IRobustRandom random)
     {
         var variants = tile.PlacementVariants;
@@ -279,46 +297,6 @@ public sealed partial class TileSystem : EntitySystem
     }
 
     /// <summary>
-    /// Returns a weighted pick of a tile variant.
-    /// </summary>
-    public byte PickVariant(ContentTileDefinition tile, int seed)
-    {
-        var rand = new System.Random(seed);
-        return PickVariant(tile, rand);
-    }
-
-    /// <summary>
-    /// Returns a weighted pick of a tile variant.
-    /// </summary>
-    public byte PickVariant(ContentTileDefinition tile, System.Random random)
-    {
-        var variants = tile.PlacementVariants;
-
-        var sum = variants.Sum();
-        var accumulated = 0f;
-        var rand = (float) random.NextDouble() * sum;
-
-        for (byte i = 0; i < variants.Length; ++i)
-        {
-            accumulated += variants[i];
-
-            if (accumulated >= rand)
-                return i;
-        }
-
-        // Shouldn't happen
-        throw new InvalidOperationException($"Invalid weighted variantize tile pick for {tile.ID}!");
-    }
-
-    /// <summary>
-    /// Returns a tile with a weighted random variant.
-    /// </summary>
-    public Tile GetVariantTile(ContentTileDefinition tile, Vector2i indices)
-    {
-        return new Tile(tile.TileId, variant: PickVariant(tile, indices));
-    }
-
-    /// <summary>
     /// Returns a tile with a weighted random variant.
     /// </summary>
     public Tile GetVariantTile(ContentTileDefinition tile, IRobustRandom random)
@@ -329,17 +307,10 @@ public sealed partial class TileSystem : EntitySystem
     /// <summary>
     /// Returns a tile with a weighted random variant.
     /// </summary>
-    public Tile GetVariantTile(ContentTileDefinition tile, System.Random random)
-    {
-        return new Tile(tile.TileId, variant: PickVariant(tile, random));
-    }
-
-    /// <summary>
-    /// Returns a tile with a weighted random variant.
-    /// </summary>
     public Tile GetVariantTile(ContentTileDefinition tile, int seed)
     {
-        var rand = new System.Random(seed);
+        var rand = new RobustRandom();
+        rand.SetSeed(seed);
         return new Tile(tile.TileId, variant: PickVariant(tile, rand));
     }
 
