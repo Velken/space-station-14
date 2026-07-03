@@ -2,7 +2,6 @@
 using Content.Shared.Maps;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Server.Maps;
@@ -54,7 +53,7 @@ public sealed partial class TileGridSplitSystem : EntitySystem
                         newHistory.ChunkHistory[newChunkIndices] = newChunk;
                     }
 
-                    newChunk.History[tile.GridIndices] = new List<ProtoId<ContentTileDefinition>>(history);
+                    newChunk.History[tile.GridIndices] = new List<ushort>(history);
                     newChunk.LastModified = _timing.CurTick;
 
                     // clean up the old history

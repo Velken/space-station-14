@@ -1,23 +1,26 @@
 using Robust.Shared.GameStates;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 
 namespace Content.Shared.Maps;
 
+/// <summary>
+/// Component for tracking the history of tiles on a grid.
+/// Used for tile stacking, allowing tiles to be deconstructed back to their previous state.
+/// </summary>
 [RegisterComponent, NetworkedComponent]
 public sealed partial class TileHistoryComponent : Component
 {
-    // History of tiles for each grid chunk.
+    /// <summary>
+    ///     History of tiles for each grid chunk, mapped by chunk indices.
+    /// </summary>
     [DataField]
     public Dictionary<Vector2i, TileHistoryChunk> ChunkHistory = new();
-
-    /// <summary>
-    ///     Tick at which PVS was last toggled. Ensures that all players receive a full update when toggling PVS.
-    /// </summary>
-    public GameTick ForceTick { get; set; }
 }
 
+/// <summary>
+/// Full state for <see cref="TileHistoryComponent"/>.
+/// </summary>
 [Serializable, NetSerializable]
 public sealed class TileHistoryState : ComponentState
 {
@@ -29,6 +32,9 @@ public sealed class TileHistoryState : ComponentState
     }
 }
 
+/// <summary>
+/// Delta state for <see cref="TileHistoryComponent"/> to optimize networking.
+/// </summary>
 [Serializable, NetSerializable]
 public sealed class TileHistoryDeltaState : ComponentState, IComponentDeltaState<TileHistoryState>
 {
@@ -100,12 +106,22 @@ public sealed class TileHistoryDeltaState : ComponentState, IComponentDeltaState
     }
 }
 
+/// <summary>
+/// Data for a single chunk's tile history.
+/// </summary>
 [DataDefinition, Serializable, NetSerializable]
 public sealed partial class TileHistoryChunk
 {
+    /// <summary>
+    /// History of tiles for each tile index in the chunk.
+    /// The list represents a stack of tile IDs, where the last element is the tile directly below the current one.
+    /// </summary>
     [DataField]
-    public Dictionary<Vector2i, List<ProtoId<ContentTileDefinition>>> History = new();
+    public Dictionary<Vector2i, List<ushort>> History = new();
 
+    /// <summary>
+    /// The tick this chunk was last modified. Used for delta networking.
+    /// </summary>
     [ViewVariables]
     public GameTick LastModified;
 
@@ -115,10 +131,10 @@ public sealed partial class TileHistoryChunk
 
     public TileHistoryChunk(TileHistoryChunk other)
     {
-        History = new Dictionary<Vector2i, List<ProtoId<ContentTileDefinition>>>(other.History.Count);
+        History = new Dictionary<Vector2i, List<ushort>>(other.History.Count);
         foreach (var (key, value) in other.History)
         {
-            History[key] = new List<ProtoId<ContentTileDefinition>>(value);
+            History[key] = new List<ushort>(value);
         }
         LastModified = other.LastModified;
     }

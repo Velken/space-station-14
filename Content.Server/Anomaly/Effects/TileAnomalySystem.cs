@@ -91,7 +91,7 @@ public sealed partial class TileAnomalySystem : SharedTileAnomalySystem
         foreach (var tileref in tiles)
         {
             var tile = (ContentTileDefinition) _tiledef[entry.Floor];
-            _tile.ReplaceTile(tileref, tile);
+            _tile.ReplaceTile(tileref, tile, true);
         }
     }
 }
